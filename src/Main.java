@@ -1,4 +1,3 @@
-import javax.sound.midi.Soundbank;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -46,8 +45,6 @@ Crea un programa que pida al usuario el precio y la cantidad de varios productos
 
 Crea un programa que pida al usuario el nombre, la edad y el género de varias personas, y muestre por pantalla estadísticas como la edad promedio y el porcentaje de hombres y mujeres.
 
-Crea un programa que pida al usuario una lista de tareas pendientes y muestre por pantalla las tareas más importantes y su fecha de vencimiento.
-
 Crea un programa que simule una cuenta bancaria, permitiendo al usuario depositar y retirar dinero, y mostrar el saldo actual.
 
 Crea un programa que pida al usuario su altura y su peso, y muestre por pantalla su índice de masa corporal y si se encuentra en un rango saludable.
@@ -66,13 +63,160 @@ public class Main {
 
         //int[] arreglo = new int[]{1,2,3,4,5,6,7,8,9,10}; // declaracio de arreglo
         // cada funcion es el ejercicio resuelto. llamar a la funcion para ejecutar dentro del main
+        ejercicio23_rangoSaludable();
 
 
     }
 
+    public static void ejercicio23_rangoSaludable()
+    {
+        System.out.println("Ingresar tu nombre:  ");
+        String nombre = scan.next();
+        System.out.println("Ingresar tu altura: ");
+        double altura = scan.nextDouble();
+        System.out.println("Ingresar tu peso corporal: ");
+        double peso = scan.nextDouble();
+
+        System.out.println("indice de masa corporal :  ");
+        double IMC = peso / (altura*altura); // formula para calcular el  índice de masa corporal
+        if(IMC<= 18.3){
+            System.out.println("bajo peso, peso NO saludable");
+        }else if(IMC>=18.5 && IMC <= 24.9){
+            System.out.println("normal, peso saludable ");
+        }else if(IMC >= 25.0 && IMC <=29.9){
+            System.out.println("sobrepeso, peso NO saludable");
+        }else if(IMC >= 30.0){
+            System.out.println("obesidad, peso NO saludable");
+        }
+        System.out.println(IMC);
+    }
+
+    public static void ejercicio23_cuentaBancaria()
+    {
+        boolean salida = true;
+        double saldo = 0, transferencia;
+
+        System.out.println("ingrsar nombre de usuario:  ");
+        String nombre = scan.next();
+        System.out.println("bienvenido "+ nombre+ " !!");
+        while(salida!=false){
+
+            System.out.println("1 - ingresar dinero\n2 - retirar dinero\n3 - fondos\n4 - salir\n    Ingresar opcion: ");
+            int opcion = scan.nextInt();
+            switch (opcion){
+
+                case 1:
+                    System.out.println("      ingresar el monto:  ");
+                    transferencia = scan.nextDouble();
+                    saldo += transferencia;
+                    System.out.println("monto cargado con exito!  ");
+                    break;
+
+                case 2:
+                    System.out.println("retirar fondo:  \n      ingresar el monto a retirar:  ");
+                    transferencia = scan.nextDouble();
+                    if(transferencia<=saldo){
+                        saldo-=transferencia;
+                        System.out.println("retiro con exito! ");
+                    }else {
+                        System.out.println("no tenes fondos suficientes !");
+
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("fondos : " + saldo);
+                    break;
+
+                case 4:
+                    System.out.println("gracias !! ");
+                    salida = false;
+                    break;
+
+                default:
+                    System.out.println("error !");
+                    break;
+
+            }
+        }
+    }
+
+    public static void ejercicio24_estadisticasHyM()
+    {
+        int salida = 1, acumuladorEdad = 0, contadorGeneroF = 0, contadorGeneroM = 0;
+        while (salida != 0)
+        {
+            System.out.println("Ingresar nombre: ");
+            String nombre = scan.next();
+            System.out.println("Ingresar la edad de " + nombre + " : ");
+            int edad = scan.nextInt();
+            System.out.println("ingresar un 1 si es mujer y un 2 si es hombre:  ");
+            int genero = scan.nextInt();
+            while (genero!=1 && genero!=2){ // validacion de genero
+                System.out.println("error! Ingresar nuevamente el genero: ");
+                genero = scan.nextInt();
+            }
+            System.out.println("Ingresar un 0 para dejar de cargar datos:  ");
+            salida = scan.nextInt();
+            acumuladorEdad +=edad; // acumulador del total de edades
+            if(genero==1){
+                contadorGeneroF++; // contador de mujeres
+            }else if(genero==2){
+                contadorGeneroM++; // contador de hombres
+            }
+        }
+        double promedioEdad = (double)acumuladorEdad/(contadorGeneroF+contadorGeneroM); // promedio edad
+        double porcentajeDeF = (double)contadorGeneroF * 100 /(contadorGeneroF+contadorGeneroM); // promedio de mujeres
+        double porcentajeDeM = (double)contadorGeneroM * 100 /(contadorGeneroF+contadorGeneroM); // promedio de hombres
+
+        System.out.println("ESTADISTICAS: \nPromedio de edad : "+promedioEdad+"\nPorcentaje de mujeres "+ porcentajeDeF + "\nProcentaje de hombres " + porcentajeDeM);
+    }
+    public static void ejercicio24_totalDeLaVenta()
+    {
+        System.out.println("Ingresar el precio del producto:  ");
+        Double valor = scan.nextDouble();
+        System.out.println("Ingresar la cantidad de elementos:  ");
+        int cantidad = scan.nextInt();
+
+        double total = (double) cantidad * valor;
+
+        System.out.println("Valor = "+valor+" cantida de elementos"+cantidad+" total " + total);
+    }
+    public static void ejercicio24_saludoDeBienvenida()
+    {
+        System.out.println("Ingresar por teclado los siguientes datos:  \nNombre :  ");
+        String nombre = scan.next();
+        System.out.println("Edad :  ");
+        int edad = scan.nextInt();
+
+        System.out.println("Bienvenido " + nombre +" nos alegramos que estes acá !!!");
+    }
+
+    public static void ejercicio24_calcularSalario(int edad, String nombre){
+
+        if(edad>16){
+            System.out.println("Salario :  ");
+            Double salario = scan.nextDouble();
+
+            if(edad>=19 && edad<=50){
+                salario = salario + (salario*0.05);
+
+            }else if(edad>=51 && edad<=60){
+                salario = salario + (salario*0.1);
+
+            }else if(edad>60){
+                salario = salario + (salario*0.15);
+            }
+
+            System.out.println("El salario es =  " + salario);
+
+        }else {
+            System.out.println( nombre + " es menor de 16 NO PUEDE TRABAJAR");
+        }
+    }
+
     public static void ejercicio23()
     {
-
         Double resultado = -1.0;
         System.out.println("Ingresar el primer valor: ");
         int valor1 = scan.nextInt();
@@ -109,7 +253,6 @@ public class Main {
                 System.out.println("Ingresó una opción fuera del rango ");
                 break;
         }
-
         System.out.println("El resultado es " + resultado);
     }
 
@@ -117,7 +260,6 @@ public class Main {
 
     public static void ejercicio22()
     {
-
         System.out.println("Ingresar un valor positivo: \nIngresar valor: ");
         int valor = scan.nextInt();
         if(valor>0){
@@ -129,12 +271,10 @@ public class Main {
             System.out.println("valor no valido");
 
         }
-
     }
 
     public static void ejercicio21()
     {
-
         System.out.println("Ingresar un dia laboral");
         String dia = scan.nextLine();
 
@@ -155,7 +295,6 @@ public class Main {
             default:
                 System.out.println("Entrada no válida. Por favor, ingrese un día de la semana válido.");
         }
-
     }
 
     public static void ejercicio20()
@@ -176,12 +315,10 @@ public class Main {
             System.out.println(" "+ valor);
 
         }
-
     }
 
     public static void ejercicio19(int mes[])
     {
-
         double promedio, acumulador = 0;
         int maximo = mes[0], minimo = mes[0];
 
@@ -198,14 +335,12 @@ public class Main {
         }
 
         promedio = acumulador/mes.length;
-
         System.out.println("Promedio = " + promedio + "\nMax = " + maximo + "\nMin = " + minimo);
 
     }
 
     public static void ejercicio18()
     {
-
         System.out.println("Ingrese la longitud del primer cateto:");
         double cateto1 = scan.nextDouble();
         System.out.println("Ingrese la longitud del segundo cateto:");
@@ -227,7 +362,6 @@ public class Main {
 
     public static void ejercicio16()
     {
-
         System.out.println("Ingresar el Ingresar el radio de una circunferencia");
         double radio = scan.nextDouble();
 
@@ -238,7 +372,6 @@ public class Main {
 
     public static void ejercicio15()
     {
-
         System.out.println("Ingresar grados centígrados: ");
         double  gradosC = scan.nextDouble();
 
@@ -258,7 +391,6 @@ public class Main {
 
     public static void ejercicio13()
     {
-
         System.out.println("Ingresar tu nombre: ");
         String nombre = scan.next();
         System.out.println("Buenos dias " + nombre);
@@ -267,7 +399,6 @@ public class Main {
 
     public static void ejercicio12()
     {
-
         System.out.println("¿Que deseas calcular? Se calculará el area:\n1 - Rectangulo\n2 - Cuadrado\n3 - Triangulo\n4 - Círculo");
         int valor = scan.nextInt();
         double resultado = 0;
@@ -309,8 +440,8 @@ public class Main {
         System.out.println("El area es: " + resultado);
     }
 
-    public static void ejercicio11(){
-
+    public static void ejercicio11()
+    {
         Scanner scan = new Scanner(System.in);
         System.out.println("ingresar dos valores para multiplicar: ");
         int valor1 = scan.nextInt();
@@ -323,7 +454,6 @@ public class Main {
 
     public static void ejercicio10()
     {
-
         System.out.println("Programa que muestra el caracter en ASCII: \n\nIngresar el caracter: ");
         char caracter = scan.next().charAt(0); // Utiliza next() para leer una cadena y charAt(0) para obtener el primer carácter
         int valorASCII = (int)caracter;
@@ -331,7 +461,6 @@ public class Main {
     }
     public static void ejercicio9()
     {
-
         System.out.println("Funcion que verifica si un año es bisiesto o no\n\nIngresar el año:  "); // Es divisible por 4 y no es divisible por 100. Es divisible por 400.
         int year = scan.nextInt();
         if(year%4 == 0 && year%100 != 0 || year%400 == 0){
@@ -339,7 +468,6 @@ public class Main {
         } else  {
             System.out.println("El año " + year + " no es bisiesto");
         }
-
     }
 
     public static void ejercicio8()
@@ -353,7 +481,6 @@ public class Main {
             if(valor>0){
                 cantidad++;
             }
-
         }
         System.out.println("la canitdad de elementos ingresados que fueron pares son: " + cantidad);
 
@@ -365,7 +492,6 @@ public class Main {
         //Encontrar la suma de los primeros 10 números naturales
         int resutado = sumaDeValoresPrimos(10); // se llama a la funcion que suma los numeros primos. se tiene que mandar la cantidad de elementos que se quieren sumar.
         System.out.println("la suma es igual a " + resutado);
-
     }
 
     public static int sumaDeValoresPrimos(int cantidaDeValores)
@@ -384,7 +510,6 @@ public class Main {
         }
 
         return suma;
-
     }
 
     public static void ejercicio6()
@@ -403,10 +528,7 @@ public class Main {
                 System.out.println("el valor " + valor + " es primo? " + respuesta);
 
             }
-
         }
-
-
     }
 
     public static  void ejercicio4()
@@ -435,7 +557,6 @@ public class Main {
             }
             numero++;
         }
-
     }
     // complemento de ejercicio 3
     public static boolean esPrimo(int numero)
@@ -451,9 +572,7 @@ public class Main {
             }
 
         }
-
         return respuesta;
-
     }
 
     // ------------
@@ -468,12 +587,10 @@ public class Main {
             System.out.println("es impar");
 
         }
-
     }
 
     public static float ejercicio1(int arreglo[])
     {
-
         System.out.println("ejercicio 1");
 
         float promedio = 0;
@@ -483,14 +600,6 @@ public class Main {
 
 
         }
-
-
         return promedio = promedio/10; // se tiene que tener un solo return por cada funcion
-
-
-
-}
-
-
-
+    }
 }
