@@ -57,7 +57,10 @@ Crea un programa que pida al usuario su altura y su peso, y muestre por pantalla
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+
+    static Scanner scan = new Scanner(System.in);
+    public static void main(String[] args)
+    {
 
 
 
@@ -67,11 +70,54 @@ public class Main {
 
     }
 
+    public static void ejercicio23()
+    {
+
+        Double resultado = -1.0;
+        System.out.println("Ingresar el primer valor: ");
+        int valor1 = scan.nextInt();
+        System.out.println("Ingresar el segundo valor: ");
+        int valor2 = scan.nextInt();
+        System.out.println("1)     +: suma los dos operandos.\n" +
+                "2)     -: resta los operandos.\n" +
+                "3)     *: multiplica los operandos.\n" +
+                "4)     /: divide los operandos, este debe dar un resultado con decimales (double)\n" +
+                "5)     ^:  1º operando como base y 2º como exponente.\n" +
+                "6)     %:  módulo, resto de la división entre operando1 y operando2.\n\nIngresar la opcion: ");
+
+        int opcion = scan.nextInt();
+        switch (opcion) {
+            case 1:
+                resultado = (double) (valor1 + valor2);
+                break;
+            case 2:
+                resultado = (double) (valor1 - valor2);
+                break;
+            case 3:
+                resultado = (double) (valor1 * valor2);
+                break;
+            case 4:
+                resultado = (double) (valor1 / valor2);
+                break;
+            case 5:
+                resultado = Math.pow((double) valor1, (double) valor2);
+                break;
+            case 6:
+                resultado = (double) (valor1 % valor2);
+                break;
+            default:
+                System.out.println("Ingresó una opción fuera del rango ");
+                break;
+        }
+
+        System.out.println("El resultado es " + resultado);
+    }
 
 
-    public static void ejercicio22(){
 
-        Scanner scan = new Scanner(System.in);
+    public static void ejercicio22()
+    {
+
         System.out.println("Ingresar un valor positivo: \nIngresar valor: ");
         int valor = scan.nextInt();
         if(valor>0){
@@ -86,9 +132,9 @@ public class Main {
 
     }
 
-    public static void ejercicio21(){
+    public static void ejercicio21()
+    {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("Ingresar un dia laboral");
         String dia = scan.nextLine();
 
@@ -112,9 +158,9 @@ public class Main {
 
     }
 
-    public static void ejercicio20(){
+    public static void ejercicio20()
+    {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("Ingresar dos valores: \nValor 1 = ");
         int valor1 = scan.nextInt();
         System.out.println("Valor 2 = ");
@@ -133,7 +179,8 @@ public class Main {
 
     }
 
-    public static void ejercicio19(int mes[]){
+    public static void ejercicio19(int mes[])
+    {
 
         double promedio, acumulador = 0;
         int maximo = mes[0], minimo = mes[0];
@@ -156,9 +203,9 @@ public class Main {
 
     }
 
-    public static void ejercicio18(){
+    public static void ejercicio18()
+    {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("Ingrese la longitud del primer cateto:");
         double cateto1 = scan.nextDouble();
         System.out.println("Ingrese la longitud del segundo cateto:");
@@ -169,18 +216,18 @@ public class Main {
 
     }
 
-    public static void ejercicio17(){
+    public static void ejercicio17()
+    {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("Programa que pase una velocidad en Km/h a m/s. La velocidad se lee por teclado.\nIngresar los km : ");
         double valor = scan.nextDouble();
         System.out.println("el valor en m/s = " + valor*0.277778);
 
     }
 
-    public static void ejercicio16(){
+    public static void ejercicio16()
+    {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("Ingresar el Ingresar el radio de una circunferencia");
         double radio = scan.nextDouble();
 
@@ -189,8 +236,9 @@ public class Main {
 
     }
 
-    public static void ejercicio15(){
-        Scanner scan = new Scanner(System.in);
+    public static void ejercicio15()
+    {
+
         System.out.println("Ingresar grados centígrados: ");
         double  gradosC = scan.nextDouble();
 
@@ -199,27 +247,27 @@ public class Main {
         System.out.println(gradosC + " en grados centígrados a fahrenheit = " + resultado);
 
     }
-    public static void ejercicio14(){
+    public static void ejercicio14()
+    {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("Ingresar el valor: ");
         int valor = scan.nextInt();
         System.out.println("el doble de " + valor + " = " + valor*2 + " y el triple = " + valor*3);
 
     }
 
-    public static void ejercicio13(){
+    public static void ejercicio13()
+    {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("Ingresar tu nombre: ");
         String nombre = scan.next();
         System.out.println("Buenos dias " + nombre);
 
     }
 
-    public static void ejercicio12() {
+    public static void ejercicio12()
+    {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("¿Que deseas calcular? Se calculará el area:\n1 - Rectangulo\n2 - Cuadrado\n3 - Triangulo\n4 - Círculo");
         int valor = scan.nextInt();
         double resultado = 0;
@@ -273,17 +321,17 @@ public class Main {
 
     }
 
-    public static void ejercicio10(){
+    public static void ejercicio10()
+    {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("Programa que muestra el caracter en ASCII: \n\nIngresar el caracter: ");
         char caracter = scan.next().charAt(0); // Utiliza next() para leer una cadena y charAt(0) para obtener el primer carácter
         int valorASCII = (int)caracter;
         System.out.println("es igual a " + valorASCII );
     }
-    public static void ejercicio9(){
+    public static void ejercicio9()
+    {
 
-        Scanner scan = new Scanner(System.in);
         System.out.println("Funcion que verifica si un año es bisiesto o no\n\nIngresar el año:  "); // Es divisible por 4 y no es divisible por 100. Es divisible por 400.
         int year = scan.nextInt();
         if(year%4 == 0 && year%100 != 0 || year%400 == 0){
@@ -294,8 +342,9 @@ public class Main {
 
     }
 
-    public static void ejercicio8(){
-        Scanner scan = new Scanner(System.in);
+    public static void ejercicio8()
+    {
+
         int  valor=1, cantidad=0;
         while (valor != 0){
 
@@ -311,14 +360,16 @@ public class Main {
         scan.close();
     }
 
-    public static void ejercicio7(){
+    public static void ejercicio7()
+    {
         //Encontrar la suma de los primeros 10 números naturales
         int resutado = sumaDeValoresPrimos(10); // se llama a la funcion que suma los numeros primos. se tiene que mandar la cantidad de elementos que se quieren sumar.
         System.out.println("la suma es igual a " + resutado);
 
     }
 
-    public static int sumaDeValoresPrimos(int cantidaDeValores){
+    public static int sumaDeValoresPrimos(int cantidaDeValores)
+    {
         int valoresPrimos = 0, i = 0 , suma = 0;
 
         while(valoresPrimos<cantidaDeValores){
@@ -336,9 +387,9 @@ public class Main {
 
     }
 
-    public static void ejercicio6(){
+    public static void ejercicio6()
+    {
 
-        Scanner scan = new Scanner(System.in); // se crea el scanner
         System.out.println("ejercicio numero 5 ");
         int valor = 1;
         boolean respuesta;
@@ -358,16 +409,18 @@ public class Main {
 
     }
 
-    public static  void ejercicio4(){
-        Scanner scan = new Scanner(System.in); // se crea el scanner
+    public static  void ejercicio4()
+    {
+
         System.out.println("ejercicio numero 4 \n ingresar un valor : ");
         int numEjercicio4 = scan.nextInt(); // se crea a variable donde se almacena el scanner.
-        scan.close();
+
         ejercicio3(numEjercicio4);
 
     }
 
-    public static void ejercicio3(int cantidad){
+    public static void ejercicio3(int cantidad)
+    {
 
         System.out.println("ejercicio 3");
 
@@ -385,7 +438,9 @@ public class Main {
 
     }
     // complemento de ejercicio 3
-    public static boolean esPrimo(int numero){
+    public static boolean esPrimo(int numero)
+    {
+
         boolean respuesta = true;
         if(numero<=1){
             respuesta = false;
@@ -402,7 +457,8 @@ public class Main {
     }
 
     // ------------
-    public static void ejercicio2(int valor){
+    public static void ejercicio2(int valor)
+    {
 
         System.out.println("ejercicio 2");
 
@@ -415,7 +471,8 @@ public class Main {
 
     }
 
-    public static float ejercicio1(int arreglo[]){
+    public static float ejercicio1(int arreglo[])
+    {
 
         System.out.println("ejercicio 1");
 
@@ -433,5 +490,7 @@ public class Main {
 
 
 }
+
+
 
 }
